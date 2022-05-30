@@ -1,0 +1,29 @@
+.profile__button_add {
+  background-image: url(../../../images/add_button.png);
+  background-color: #000;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  min-width: 150px;                                                                /*костыль*/
+  min-height: 50px;
+  justify-self: end;
+  align-self: center;
+  transition: .5s;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.profile__button_add:hover {
+  opacity: .6;
+  transition: .5s;
+}
+
+@media  (max-width: 653px) {
+  .profile__button_add {
+    margin: 4px 0 0 0;
+    background-image: url(../../../images/add_button.png);
+    min-width: 100%;
+    justify-self: center;
+  }
+}
