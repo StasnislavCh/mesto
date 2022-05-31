@@ -14,13 +14,9 @@ function showInfo() {
   jobInpute.value = job.textContent;
 }
 
-buttonEdit.addEventListener("click", showInfo);
-
 function closeInfo() {
   popup.classList.remove('popup_opened')
 }
-
-buttonClose.addEventListener("click", closeInfo)
 
 function formSubmitHandler (evt) {
   evt.preventDefault();
@@ -31,4 +27,6 @@ function formSubmitHandler (evt) {
   closeInfo()
 }
 
+buttonEdit.addEventListener("click", showInfo);
+buttonClose.addEventListener("click", closeInfo)
 formElement.addEventListener('submit', formSubmitHandler);
