@@ -4,6 +4,6 @@
 
 @media (max-width: 879px) {
   .profile__container {
-    margin: 0 -38px 0 0;
+    justify-content: flex-end;
   }
 }
