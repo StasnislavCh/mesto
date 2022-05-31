@@ -4,8 +4,8 @@ const formElement = document.querySelector('.popup__form');  //Ищем форм
 const buttonClose = document.querySelector('.popup__close');  //Ищем кнопку закрытия попапа
 let profileName = document.querySelector('.profile__name');  //Ищем имя пользователя
 let job = document.querySelector('.profile__job');  //Ищем работу пользователя
-let profileNameInpute = formElement.querySelector('.popup__inpute_name');  //Получаем введённое имя пользователя
-let jobInpute = formElement.querySelector('.popup__inpute_job');  //Получаем введённую работу пользователя
+let profileNameInpute = formElement.querySelector('.popup__inpute_field_name');  //Получаем введённое имя пользователя
+let jobInpute = formElement.querySelector('.popup__inpute_field_job');  //Получаем введённую работу пользователя
 
 //функция открытия попапа
 function showInfo() {

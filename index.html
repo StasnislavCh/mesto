@@ -20,11 +20,11 @@
         <div class="profile__info">
           <div class="profile__container">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit"></button>
+            <button class="profile__edit" type="button" aria-label="Изменить профиль"></button>
           </div>
           <p class="profile__job">Исследователь океана</p>
         </div>
-        <button class="profile__add"></button>
+        <button class="profile__add" type="button" aria-label="Добавить фото"></button>
       </section>
       <section class="elements">
         <article class="element">
@@ -72,16 +72,16 @@
       </section>
     </main>
     <footer class="footer">
-      <p class="footer__copyright">© 2020 Mesto Russia</p>
+      <p class="footer__copyright">&copy;&nbsp;2020 Mesto Russia</p>
     </footer>
     <div class="popup">
       <div class="popup__container">
         <button class="popup__close"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form class="popup__form">
-          <input class="popup__inpute popup__inpute_name" type="text" name="name" placeholder="Имя">
-          <input class="popup__inpute popup__inpute_job" type="text" name="job" placeholder="О себе">
-          <button type="submit" class="popup__save">Сохранить</button>
+        <form class="popup__form" name="editInfo" method="get" action="./scripts/index.js">
+          <input class="popup__inpute popup__inpute_field_name" type="text" name="name" placeholder="Имя">
+          <input class="popup__inpute popup__inpute_field_job" type="text" name="job" placeholder="О себе">
+          <button type="submit" class="popup__save" type="submit" aria-label="Сохранить">Сохранить</button>
         </form>
       </div>
     </div>
