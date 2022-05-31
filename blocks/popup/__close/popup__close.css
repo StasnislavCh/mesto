@@ -1,7 +1,7 @@
 .popup__close {
   width: 32px;
   height: 32px;
-  background-image: url("../../../images/close_icon.png");
+  background-image: url("../../../images/close_icon.svg");
   background-color: transparent;
   background-position: center;
   background-size: cover;
@@ -25,4 +25,3 @@
     left: 93%;
   }
 }
-
