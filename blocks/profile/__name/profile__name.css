@@ -12,7 +12,7 @@
   white-space: nowrap;
 }
 
-@media (max-width: 879px) {
+@media (max-width: 900px) {
   .profile__name {
     max-width: 189px;
     font-size: 27px;

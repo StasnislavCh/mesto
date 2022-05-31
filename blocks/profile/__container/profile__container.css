@@ -2,8 +2,10 @@
   display: flex;
 }
 
-@media (max-width: 879px) {
+@media (max-width: 900px) {
   .profile__container {
-    justify-content: flex-end;
+    justify-content: center;
+    position: relative;
+    left: 14px;
   }
 }

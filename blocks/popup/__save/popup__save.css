@@ -22,7 +22,7 @@
   transition: .5s;
 }
 
-@media  (max-width: 879px) {
+@media  (max-width: 900px) {
   .popup__save {
     margin: 45px 0 0;
     height: 46px;

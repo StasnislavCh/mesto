@@ -3,7 +3,7 @@
   border-radius: 10px 10px 0 0;
 }
 
-@media (max-width: 879px) {
+@media (max-width: 900px) {
   .element__image {
     width: 100%;
   }

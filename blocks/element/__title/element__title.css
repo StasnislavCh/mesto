@@ -12,9 +12,9 @@
   overflow: hidden;
 }
 
-@media (max-width: 879px) {
+@media (max-width: 900px) {
   .element__title {
-    max-width: 36vw;
+    max-width: 91%;
   }
 }
 

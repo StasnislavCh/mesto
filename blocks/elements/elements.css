@@ -6,10 +6,10 @@
   gap: 20px 17px;
 }
 
-@media (max-width: 879px) {
+@media (max-width: 900px) {
   .elements {
     grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
-    padding: 0 19px;
+    padding: 0 19px 0;
     justify-items: center;
   }
 }

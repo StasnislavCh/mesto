@@ -18,11 +18,11 @@
   transition: opacity .5s;
 }
 
-@media (max-width: 879px) {
+@media (max-width: 900px) {
   .profile__edit {
     width: 18px;
     height: 18px;
     background-size: 7.5px 7.5px;
-    margin: 8px 19px 0 10px;
+    margin: 8px 0 0 10px;
   }
 }

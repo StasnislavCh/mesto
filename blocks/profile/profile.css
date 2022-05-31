@@ -7,7 +7,7 @@
   gap: 30px;
 }
 
-@media  (max-width: 879px) {
+@media  (max-width: 900px) {
   .profile {
     padding: 38px 19px 36px;
     gap: 26px;
