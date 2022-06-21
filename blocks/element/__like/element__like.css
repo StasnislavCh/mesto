@@ -1,5 +1,5 @@
 .element__like {
-  background-image: url(../../../images/like.svg);
+  background-image: url(../../../images/button_like.svg);
   background-color: #fff;
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -13,12 +13,6 @@
 }
 
 .element__like:hover {
-  opacity: .5;
-  transition: .5s;
-}
-
-.element__like:active {
-  background-image: url(../../../images/like_active.svg);
   opacity: .5;
   transition: .5s;
 }

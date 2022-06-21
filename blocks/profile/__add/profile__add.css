@@ -1,5 +1,5 @@
 .profile__add {
-  background-image: url(../../../images/add_button.svg);
+  background-image: url(../../../images/button_add.svg);
   background-color: transparent;
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -21,7 +21,7 @@
 
 @media  (max-width: 653px) {
   .profile__add {
-    margin: 4px 0 0 0;
+    margin: 6px 0 0 0;
     background-size: 16px 16px;
     min-width: 100%;
     justify-self: center;
