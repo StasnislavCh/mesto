@@ -32,46 +32,46 @@
     <footer class="footer">
       <p class="footer__copyright">&copy;&nbsp;2020 Mesto Russia</p>
     </footer>
-    <div class="popup popup_edit">
+    <div class="popup popup_edit_info">
       <div class="popup__container">
-        <button class="popup__close popup__close_edit" aria-label="Закрыть"></button>
+        <button class="popup__close popup__close_edit_info" type="button" aria-label="Закрыть"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form class="popup__form popup__form_edit" name="editInfo" method="get" action="./scripts/index.js">
+        <form class="popup__form popup__form_edit_info" name="editInfo" method="get" action="./scripts/index.js">
           <input class="popup__inpute popup__inpute_field_name" type="text" name="name" placeholder="Имя">
           <input class="popup__inpute popup__inpute_field_job" type="text" name="job" placeholder="О себе">
-          <button type="submit" class="popup__save" aria-label="Сохранить">Сохранить</button>
+          <button class="popup__save" type="submit" aria-label="Сохранить">Сохранить</button>
         </form>
       </div>
     </div>
-    <div class="popup popup_add">
+    <div class="popup popup_photo_add">
       <div class="popup__container">
-        <button class="popup__close popup__close_add" aria-label="Закрыть"></button>
+        <button class="popup__close popup__close_photo_add" type="button" aria-label="Закрыть"></button>
         <h3 class="popup__title">Новое место</h3>
-        <form class="popup__form popup__form_add" name="editInfo" method="get" action="./scripts/index.js">
-          <input class="popup__inpute popup__inpute_field_title" type="text" name="name" placeholder="Название">
-          <input class="popup__inpute popup__inpute_field_link" type="text" name="job" placeholder="Ссылка на картинку">
-          <button type="submit" class="popup__save" aria-label="Сохранить">Создать</button>
+        <form class="popup__form popup__form_photo_add" name="photoAdd" method="get" action="./scripts/index.js">
+          <input class="popup__inpute popup__inpute_field_title" type="text" name="photo_name" placeholder="Название">
+          <input class="popup__inpute popup__inpute_field_link" type="text" name="photo_link" placeholder="Ссылка на картинку">
+          <button class="popup__save" type="submit" aria-label="Сохранить">Создать</button>
         </form>
       </div>
     </div>
-    <div class="popup popup_photo">
+    <div class="popup popup_photo_big">
       <figure class="popup__figure">
-        <button class="popup__close popup__close_photo" aria-label="Закрыть"></button>
+        <button class="popup__close popup__close_photo_big" type="button" aria-label="Закрыть"></button>
         <img class="popup__image" src="#" alt="">
         <figcaption class="popup__caption"></figcaption>
       </figure>
     </div>
     <template class="template-card">
       <article class="element">
-        <button class="element__delete"></button>
+        <button class="element__delete" type="button" aria-label="Удалить"></button>
         <img class="element__image" src="#" alt="">
         <div class="element__caption">
           <h2 class="element__title"></h2>
-          <button class="element__like" type="submit" aria-label="Нравится"></button>
+          <button class="element__like" type="button" aria-label="Нравится"></button>
         </div>
       </article>
     </template>
   </div>
-  <script src="./scripts/index.js" <!--type="module"></script>
+  <script src="./scripts/index.js" type="module"></script>
 </body>
 </html>

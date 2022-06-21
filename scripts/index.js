@@ -1,53 +1,27 @@
-//import {initialCards} from './initialCards.js';  //импорт массива
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+import {initialCards} from './initialCards.js';  //импорт массива
 
 const buttonAdd = document.querySelector('.profile__add');  //Ищем кнопку добавления фото
-const popupAdd = document.querySelector('.popup_add');  //Ищем попап добавить фото
-const popupAddClose = popupAdd.querySelector('.popup__close_add');  //Ищем кнопку закрыть в добавить фото
-const formAddElement = popupAdd.querySelector('.popup__form_add');  //Ищем форму в попапе
+const popupAdd = document.querySelector('.popup_photo_add');  //Ищем попап добавить фото
+const popupAddClose = popupAdd.querySelector('.popup__close_photo_add');  //Ищем кнопку закрыть в добавить фото
+const formAddElement = popupAdd.querySelector('.popup__form_photo_add');  //Ищем форму в добавить фото
 const placeTitle = formAddElement.querySelector('.popup__inpute_field_title');  //Получаем введённое название места
 const placeLink = formAddElement.querySelector('.popup__inpute_field_link');  //Получаем введённую ссылку
 const templateCard = document.querySelector('.template-card').content;  //Получаем шаблон
 const elementsSection = document.querySelector('.elements');  //Получаем элемент
 
 const buttonEdit = document.querySelector(".profile__edit");  //Ищем кнопку изменить
-const popupInfo = document.querySelector('.popup_edit');  //Ищем попап редактирования
-const popupEditClose = popupInfo.querySelector('.popup__close_edit');  //Ищем кнопку закрытия в попапе редактирования
-const formEditElement = popupInfo.querySelector('.popup__form_edit');  //Ищем форму в попапе редактирования
+const popupInfo = document.querySelector('.popup_edit_info');  //Ищем попап редактирования
+const popupEditClose = popupInfo.querySelector('.popup__close_edit_info');  //Ищем кнопку закрытия в попапе редактирования
+const formEditElement = popupInfo.querySelector('.popup__form_edit_info');  //Ищем форму в попапе редактирования
 const profileName = document.querySelector('.profile__name');  //Ищем имя пользователя
 const job = document.querySelector('.profile__job');  //Ищем работу пользователя
 const profileNameInpute = formEditElement.querySelector('.popup__inpute_field_name');  //Получаем введённое имя пользователя
 const jobInpute = formEditElement.querySelector('.popup__inpute_field_job');  //Получаем введённую работу пользователя
 
-const popupPhoto = document.querySelector('.popup_photo');  //Ищем попап фото
+const popupPhoto = document.querySelector('.popup_photo_big');  //Ищем попап фото
 const popupImage = popupPhoto.querySelector('.popup__image');  //Сюда изображение
 const popupCaption = popupPhoto.querySelector('.popup__caption');  //Сюда описание
-const popupPhotoClose = popupPhoto.querySelector('.popup__close_photo');  //Ищем кнопку закрыть фото
+const popupPhotoClose = popupPhoto.querySelector('.popup__close_photo_big');  //Ищем кнопку закрыть фото
 
 function showPopup(popup) {  //Функция показа попапа
   popup.classList.add('popup_opened');  //Добавляем попапу класс видимости
@@ -79,7 +53,7 @@ function likeElementHandler (evt) {  //Функция лайков
   evt.target.classList.toggle('element__like_active');  //Добавляем лайку класс установленного
 }
 
-function submitFormEditHandler (evt) {  //Функция для отправки данных формы
+function submitFormEditHandler (evt) {  //Функция для отправки данных формы редактировать
   evt.preventDefault();  //Эта строчка отменяет стандартную отправку формы
 
   profileName.textContent = profileNameInpute.value;  //Получаем введённое имя пользователя
