@@ -1,9 +1,35 @@
-import {initialCards} from './initialCards.js';  //импорт массива
+//import {initialCards} from './initialCards.js';  //импорт массива
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
 
 const buttonAdd = document.querySelector('.profile__add');  //Ищем кнопку добавления фото
 const popupAdd = document.querySelector('.popup_add');  //Ищем попап добавить фото
-const popupAddClose = document.querySelector('.popup__close_add');  //Ищем кнопку закрыть в добавить фото
-const formAddElement = document.querySelector('.popup__form_add');  //Ищем форму в попапе
+const popupAddClose = popupAdd.querySelector('.popup__close_add');  //Ищем кнопку закрыть в добавить фото
+const formAddElement = popupAdd.querySelector('.popup__form_add');  //Ищем форму в попапе
 const placeTitle = formAddElement.querySelector('.popup__inpute_field_title');  //Получаем введённое название места
 const placeLink = formAddElement.querySelector('.popup__inpute_field_link');  //Получаем введённую ссылку
 const templateCard = document.querySelector('.template-card').content;  //Получаем шаблон
@@ -11,17 +37,17 @@ const elementsSection = document.querySelector('.elements');  //Получаем
 
 const buttonEdit = document.querySelector(".profile__edit");  //Ищем кнопку изменить
 const popupInfo = document.querySelector('.popup_edit');  //Ищем попап редактирования
-const buttonClose = document.querySelector('.popup__close_edit');  //Ищем кнопку закрытия в попапе редактирования
-const formElement = document.querySelector('.popup__form_edit');  //Ищем форму в попапе
-let profileName = document.querySelector('.profile__name');  //Ищем имя пользователя
-let job = document.querySelector('.profile__job');  //Ищем работу пользователя
-let profileNameInpute = formElement.querySelector('.popup__inpute_field_name');  //Получаем введённое имя пользователя
-let jobInpute = formElement.querySelector('.popup__inpute_field_job');  //Получаем введённую работу пользователя
+const popupEditClose = popupInfo.querySelector('.popup__close_edit');  //Ищем кнопку закрытия в попапе редактирования
+const formEditElement = popupInfo.querySelector('.popup__form_edit');  //Ищем форму в попапе редактирования
+const profileName = document.querySelector('.profile__name');  //Ищем имя пользователя
+const job = document.querySelector('.profile__job');  //Ищем работу пользователя
+const profileNameInpute = formEditElement.querySelector('.popup__inpute_field_name');  //Получаем введённое имя пользователя
+const jobInpute = formEditElement.querySelector('.popup__inpute_field_job');  //Получаем введённую работу пользователя
 
 const popupPhoto = document.querySelector('.popup_photo');  //Ищем попап фото
-const popupImage = document.querySelector('.popup__image');  //Сюда изображение
-const popupCaption = document.querySelector('.popup__caption');  //Сюда описание
-const popupPhotoClose = document.querySelector('.popup__close_photo');  //Ищем кнопку закрыть фото
+const popupImage = popupPhoto.querySelector('.popup__image');  //Сюда изображение
+const popupCaption = popupPhoto.querySelector('.popup__caption');  //Сюда описание
+const popupPhotoClose = popupPhoto.querySelector('.popup__close_photo');  //Ищем кнопку закрыть фото
 
 function showPopup(popup) {  //Функция показа попапа
   popup.classList.add('popup_opened');  //Добавляем попапу класс видимости
@@ -53,7 +79,7 @@ function likeElementHandler (evt) {  //Функция лайков
   evt.target.classList.toggle('element__like_active');  //Добавляем лайку класс установленного
 }
 
-function submitFormHandler (evt) {  //Функция для отправки данных формы
+function submitFormEditHandler (evt) {  //Функция для отправки данных формы
   evt.preventDefault();  //Эта строчка отменяет стандартную отправку формы
 
   profileName.textContent = profileNameInpute.value;  //Получаем введённое имя пользователя
@@ -62,12 +88,12 @@ function submitFormHandler (evt) {  //Функция для отправки д�
   closePopup(popupInfo)  //После отправки данных закрываем форму
 }
 
-function prependInSection (title, link) {  //Функция создания новго элемента
+function prependInSection (title, link) {  //Функция создания нового элемента
   const newElement = createElement({name:title, link:link});  //Делаем новый элемент
   elementsSection.prepend(newElement);  //Вставляем новый элемент в секцию
 }
 
-function submitAddHandler(evt) {  //Функция добавления фото
+function submitFormAddHandler(evt) {  //Функция добавления фото
   evt.preventDefault(); //Эта строчка отменяет стандартную отправку формы
 
   prependInSection(placeTitle.value, placeLink.value);  //Функция добавления фото на страницу
@@ -102,8 +128,8 @@ renderList();  //Запускаем функцию
 
 buttonAdd.addEventListener('click', () => showPopup(popupAdd));  //Слушатель нажатия кнопки добавить фото
 popupAddClose.addEventListener('click', () => closePopup(popupAdd));  //Слушатель нажания кнопки закрыть в добавить фото
-formAddElement.addEventListener('submit', submitAddHandler);  //Слушатель нажатия кнопки сохранить
+formAddElement.addEventListener('submit', submitFormAddHandler);  //Слушатель нажатия кнопки сохранить
 buttonEdit.addEventListener('click', showInfo);  //Слушатель нажатия кнопки изменить
-buttonClose.addEventListener('click', () => closePopup(popupInfo));  //Слушатель нажания кнопки закрыть редактирование
-formElement.addEventListener('submit', submitFormHandler);  //Слушатель нажатия кнопки сохранить
+popupEditClose.addEventListener('click', () => closePopup(popupInfo));  //Слушатель нажания кнопки закрыть редактирование
+formEditElement.addEventListener('submit', submitFormEditHandler);  //Слушатель нажатия кнопки сохранить
 popupPhotoClose.addEventListener('click', () => closePopup(popupPhoto));  //Слушатель нажания кнопки закрыть фото
