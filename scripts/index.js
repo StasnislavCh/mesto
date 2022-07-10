@@ -11,7 +11,6 @@ const validSetting = {  //Объект с необходимым для функ
 
 const buttonAdd = document.querySelector('.profile__add');  //Ищем кнопку добавления фото
 const popupAdd = document.querySelector('.popup_photo_add');  //Ищем попап добавить фото
-const popupAddClose = popupAdd.querySelector('.popup__close_photo_add');  //Ищем кнопку закрыть в добавить фото
 const formAddElement = popupAdd.querySelector('.popup__form_photo_add');  //Ищем форму в добавить фото
 const placeTitle = formAddElement.querySelector('.popup__inpute_field_title');  //Получаем введённое название места
 const placeLink = formAddElement.querySelector('.popup__inpute_field_link');  //Получаем введённую ссылку
@@ -20,7 +19,6 @@ const elementsSection = document.querySelector('.elements');  //Получаем
 
 const buttonEdit = document.querySelector(".profile__edit");  //Ищем кнопку изменить
 const popupInfo = document.querySelector('.popup_edit_info');  //Ищем попап редактирования
-const popupEditClose = popupInfo.querySelector('.popup__close_edit_info');  //Ищем кнопку закрытия в попапе редактирования
 const formEditElement = popupInfo.querySelector('.popup__form_edit_info');  //Ищем форму в попапе редактирования
 const profileName = document.querySelector('.profile__name');  //Ищем имя пользователя
 const job = document.querySelector('.profile__job');  //Ищем работу пользователя
@@ -30,18 +28,23 @@ const jobInpute = formEditElement.querySelector('.popup__inpute_field_job');  //
 const popupPhoto = document.querySelector('.popup_photo_big');  //Ищем попап фото
 const popupImage = popupPhoto.querySelector('.popup__image');  //Сюда изображение
 const popupCaption = popupPhoto.querySelector('.popup__caption');  //Сюда описание
-const popupPhotoClose = popupPhoto.querySelector('.popup__close_photo_big');  //Ищем кнопку закрыть фото
+
+const closeButtons = document.querySelectorAll('.popup__close');  //Ищем все кнопки закрыть по универсальному селектору
+closeButtons.forEach((button) => {
+  const popup = button.closest('.popup');  //Находим 1 раз ближайший к крестику попап
+  button.addEventListener('click', () => closePopup(popup));  //Слушатель нажатия кнопки закрыть
+});
 
 function showPopup(popup) {  //Функция показа попапа
   popup.classList.add('popup_opened');  //Добавляем попапу класс видимости
   document.addEventListener('keydown', handleEscClose);  //Добавляем слушатель кнопки Esc
-  document.addEventListener('click', handleClickClose);  //Добавляем слушатель клика
+  document.addEventListener('mousedown', handleClickClose);  //Добавляем слушатель клика
 };
 
 function closePopup(popup) {  //Функция закрытия попапа
   popup.classList.remove('popup_opened');  //Убираем у попапа класс видимости
   document.removeEventListener('keydown', handleEscClose);  //Удаляем слушатель кнопки Esc
-  document.removeEventListener('click', handleClickClose);  //Удаляем слушатель клика
+  document.removeEventListener('mousedown', handleClickClose);  //Удаляем слушатель клика
 };
 
 function handleClickClose(evt) {  //Функция закрытия попапа кликом
@@ -70,22 +73,22 @@ function showInfo() {  //Функция показа редактировани�
   resetFormError(validSetting, popupInfo);//Сбрасываем ошибки попапа инфо
 };
 
-function showPhoto (image, caption) { //Функция показа попапа фото
+function showPhoto(image, caption) { //Функция показа попапа фото
   popupImage.src = image;  //Выбор источника фото
   popupImage.alt = caption; //Выбор источника подписи
   popupCaption.textContent = caption;  //Выбор источника подписи
   showPopup(popupPhoto);  //Вызов функции показа попапа
 };
 
-function deleteElementHandler (evt) {  //Функция удаления фото
+function handleDeleteElement(evt) {  //Функция удаления фото
   evt.target.closest('.element').remove();  //Ищем и удаляем весь блок фото
 };
 
-function likeElementHandler (evt) {  //Функция лайков
+function handleLikeElement(evt) {  //Функция лайков
   evt.target.classList.toggle('element__like_active');  //Добавляем лайку класс установленного
 };
 
-function submitFormEditHandler (evt) {  //Функция для отправки данных формы редактировать
+function handleSubmitFormEdit (evt) {  //Функция для отправки данных формы редактировать
   evt.preventDefault();  //Эта строчка отменяет стандартную отправку формы
 
   profileName.textContent = profileNameInpute.value;  //Получаем введённое имя пользователя
@@ -99,7 +102,7 @@ function prependInSection (title, link) {  //Функция создания н�
   elementsSection.prepend(newElement);  //Вставляем новый элемент в секцию
 };
 
-function submitFormAddHandler(evt) {  //Функция добавления фото
+function handleSubmitFormAdd (evt) {  //Функция добавления фото
   evt.preventDefault(); //Эта строчка отменяет стандартную отправку формы
 
   prependInSection(placeTitle.value, placeLink.value);  //Функция добавления фото на страницу
@@ -119,8 +122,8 @@ function createElement(item) {  //Функция создания нового �
   elementImage.alt = item.name;  //Передаём название картинки в атрибут альт
   elementTitle.textContent = item.name;  //Передаём название картинки в подпись
 
-  elementLike.addEventListener('click', likeElementHandler);  //Слушатель нажатия кнопки лайк
-  elementDelete.addEventListener('click', deleteElementHandler);  //Слушатель нажатия кнопки удалить
+  elementLike.addEventListener('click', handleLikeElement);  //Слушатель нажатия кнопки лайк
+  elementDelete.addEventListener('click', handleDeleteElement);  //Слушатель нажатия кнопки удалить
   elementImage.addEventListener('click', () => showPhoto(item.link, item.name));  //Слушатель нажатия кнопки вызова попапа фото
 
   return element;  //На выходе имеем готовый элемент
@@ -133,9 +136,6 @@ function renderList() {  //Функция отрисовки элемента
 renderList();  //Запускаем функцию
 
 buttonAdd.addEventListener('click', showAdd);  //Слушатель нажатия кнопки добавить фото
-popupAddClose.addEventListener('click', () => closePopup(popupAdd));  //Слушатель нажания кнопки закрыть в добавить фото
-formAddElement.addEventListener('submit', submitFormAddHandler);  //Слушатель нажатия кнопки сохранить
+formAddElement.addEventListener('submit', handleSubmitFormAdd);  //Слушатель нажатия кнопки сохранить
 buttonEdit.addEventListener('click', showInfo);  //Слушатель нажатия кнопки изменить
-popupEditClose.addEventListener('click', () => closePopup(popupInfo));  //Слушатель нажания кнопки закрыть редактирование
-formEditElement.addEventListener('submit', submitFormEditHandler);  //Слушатель нажатия кнопки сохранить
-popupPhotoClose.addEventListener('click', () => closePopup(popupPhoto));  //Слушатель нажания кнопки закрыть фото
+formEditElement.addEventListener('submit', handleSubmitFormEdit);  //Слушатель нажатия кнопки сохранить

@@ -9,75 +9,77 @@
   <meta name="author" content="Станислав Чоботько">
   <link rel="stylesheet" type="text/css" href="./pages/index.css">
 </head>
-<body>
-  <div class="page">
-    <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="Место">
-    </header>
-    <main class="content">
-      <section class="profile">
-        <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватарка">
-        <div class="profile__info">
-          <div class="profile__container">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit" type="button" aria-label="Изменить профиль"></button>
-          </div>
-          <p class="profile__job">Исследователь океана</p>
+<body class="page">
+  <header class="header">
+    <img class="header__logo" src="./images/logo.svg" alt="Место">
+  </header>
+  <main class="content">
+    <section class="profile">
+      <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватарка">
+      <div class="profile__info">
+        <div class="profile__container">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__edit" type="button" aria-label="Изменить профиль"></button>
         </div>
-        <button class="profile__add" type="button" aria-label="Добавить фото"></button>
-      </section>
-      <section class="elements">
-      </section>
-    </main>
-    <footer class="footer">
-      <p class="footer__copyright">&copy;&nbsp;2020 Mesto Russia</p>
-    </footer>
-    <div class="popup popup_edit_info">
-      <div class="popup__container">
-        <button class="popup__close popup__close_edit_info" type="button" aria-label="Закрыть"></button>
-        <h3 class="popup__title">Редактировать профиль</h3>
-        <form class="popup__form popup__form_edit_info" name="editInfo" method="get" action="./scripts/index.js" novalidate>
-          <input class="popup__inpute popup__inpute_field_name" type="text" name="name" placeholder="Имя" minlength="2"
+        <p class="profile__job">Исследователь океана</p>
+      </div>
+      <button class="profile__add" type="button" aria-label="Добавить фото"></button>
+    </section>
+    <section class="elements">
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">&copy;&nbsp;2020 Mesto Russia</p>
+  </footer>
+  <div class="popup popup_edit_info">
+    <div class="popup__container">
+      <button class="popup__close popup__close_edit_info" type="button" aria-label="Закрыть"></button>
+      <h3 class="popup__title">Редактировать профиль</h3>
+      <form class="popup__form popup__form_edit_info" name="editInfo" method="get" action="./scripts/index.js"
+        novalidate>
+        <input class="popup__inpute popup__inpute_field_name" type="text" name="name" placeholder="Имя" minlength="2"
           maxlength="40" required>
-          <span class="popup__error name-error"></span>
-          <input class="popup__inpute popup__inpute_field_job" type="text" name="job" placeholder="О себе" minlength="2"
+        <span class="popup__error name-error"></span>
+        <input class="popup__inpute popup__inpute_field_job" type="text" name="job" placeholder="О себе" minlength="2"
           maxlength="200" required>
-          <span class="popup__error job-error"></span>
-          <button class="popup__save" type="submit" aria-label="Сохранить">Сохранить</button>
-        </form>
-      </div>
+        <span class="popup__error job-error"></span>
+        <button class="popup__save" type="submit" aria-label="Сохранить">Сохранить</button>
+      </form>
     </div>
-    <div class="popup popup_photo_add">
-      <div class="popup__container">
-        <button class="popup__close popup__close_photo_add" type="button" aria-label="Закрыть"></button>
-        <h3 class="popup__title">Новое место</h3>
-        <form class="popup__form popup__form_photo_add" name="photoAdd" method="get" action="./scripts/index.js" novalidate>
-          <input class="popup__inpute popup__inpute_field_title" type="text" name="photoTitle" placeholder="Название" minlength="2" maxlength="30" required>
-          <span class="popup__error photoTitle-error"></span>
-          <input class="popup__inpute popup__inpute_field_link" type="url" name="photoLink" placeholder="Ссылка на картинку" required>
-          <span class="popup__error photoLink-error"></span>
-          <button class="popup__save" type="submit" aria-label="Сохранить">Создать</button>
-        </form>
-      </div>
-    </div>
-    <div class="popup popup_photo_big">
-      <figure class="popup__figure">
-        <button class="popup__close popup__close_photo_big" type="button" aria-label="Закрыть"></button>
-        <img class="popup__image" src="#" alt="">
-        <figcaption class="popup__caption"></figcaption>
-      </figure>
-    </div>
-    <template class="template-card">
-      <article class="element">
-        <button class="element__delete" type="button" aria-label="Удалить"></button>
-        <img class="element__image" src="#" alt="">
-        <div class="element__caption">
-          <h2 class="element__title"></h2>
-          <button class="element__like" type="button" aria-label="Нравится"></button>
-        </div>
-      </article>
-    </template>
   </div>
+  <div class="popup popup_photo_add">
+    <div class="popup__container">
+      <button class="popup__close popup__close_photo_add" type="button" aria-label="Закрыть"></button>
+      <h3 class="popup__title">Новое место</h3>
+      <form class="popup__form popup__form_photo_add" name="photoAdd" method="get" action="./scripts/index.js"
+        novalidate>
+        <input class="popup__inpute popup__inpute_field_title" type="text" name="photoTitle" placeholder="Название"
+          minlength="2" maxlength="30" required>
+        <span class="popup__error photoTitle-error"></span>
+        <input class="popup__inpute popup__inpute_field_link" type="url" name="photoLink"
+          placeholder="Ссылка на картинку" required>
+        <span class="popup__error photoLink-error"></span>
+        <button class="popup__save" type="submit" aria-label="Сохранить">Создать</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup_photo_big">
+    <figure class="popup__figure">
+      <button class="popup__close popup__close_photo_big" type="button" aria-label="Закрыть"></button>
+      <img class="popup__image" src="#" alt="">
+      <figcaption class="popup__caption"></figcaption>
+    </figure>
+  </div>
+  <template class="template-card">
+    <article class="element">
+      <button class="element__delete" type="button" aria-label="Удалить"></button>
+      <img class="element__image" src="#" alt="">
+      <div class="element__caption">
+        <h2 class="element__title"></h2>
+        <button class="element__like" type="button" aria-label="Нравится"></button>
+      </div>
+    </article>
+  </template>
   <script src="./scripts/index.js" type="module"></script>
   <script src="./scripts/validate.js"></script>
 </body>
