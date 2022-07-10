@@ -1,5 +1,14 @@
 import {initialCards} from './initialCards.js';  //импорт массива
 
+const validSetting = {  //Объект с необходимым для функции сброса ошибок
+  formSelector: '.popup__form',
+  inputSelector: '.popup__inpute',
+  submitButtonSelector: '.popup__save',
+  inactiveButtonClass: 'popup__save_disabled',
+  inputErrorClass: 'popup__inpute_type_error',
+  errorClass: 'popup__error_visible'
+};
+
 const buttonAdd = document.querySelector('.profile__add');  //Ищем кнопку добавления фото
 const popupAdd = document.querySelector('.popup_photo_add');  //Ищем попап добавить фото
 const popupAddClose = popupAdd.querySelector('.popup__close_photo_add');  //Ищем кнопку закрыть в добавить фото
@@ -25,33 +34,56 @@ const popupPhotoClose = popupPhoto.querySelector('.popup__close_photo_big');  //
 
 function showPopup(popup) {  //Функция показа попапа
   popup.classList.add('popup_opened');  //Добавляем попапу класс видимости
-}
+  document.addEventListener('keydown', handleEscClose);  //Добавляем слушатель кнопки Esc
+  document.addEventListener('click', handleClickClose);  //Добавляем слушатель клика
+};
 
 function closePopup(popup) {  //Функция закрытия попапа
   popup.classList.remove('popup_opened');  //Убираем у попапа класс видимости
-}
+  document.removeEventListener('keydown', handleEscClose);  //Удаляем слушатель кнопки Esc
+  document.removeEventListener('click', handleClickClose);  //Удаляем слушатель клика
+};
+
+function handleClickClose(evt) {  //Функция закрытия попапа кликом
+  if (evt.target.classList.contains('popup')) {
+    closePopup(evt.target);  //Если клик на попапе, то закрыть попап
+  };
+};
+
+function handleEscClose(evt) {  //Функция закрытия попапа кнопкой Esc
+  if (evt.key === "Escape") {
+    const popup = document.querySelector('.popup_opened');  //Если нажата кнопка Esc при открытом попапе, то закрыть его
+    closePopup(popup);
+  };
+};
+
+function showAdd() {  //Функция показа добавления
+  formAddElement.reset();  //Сброс значений формы
+  showPopup(popupAdd);  //Вызов показа попапа
+  resetFormError(validSetting, popupAdd);  //Сброс ошибок формы
+};
 
 function showInfo() {  //Функция показа редактирования
   showPopup(popupInfo);  //Вызываем функцию открытия попапа с параметром попапа редактирования
   profileNameInpute.value = profileName.textContent;  //Получаем со страницы имя пользователя
   jobInpute.value = job.textContent;  //Получаем со страницы работу пользователя
-}
+  resetFormError(validSetting, popupInfo);//Сбрасываем ошибки попапа инфо
+};
 
 function showPhoto (image, caption) { //Функция показа попапа фото
   popupImage.src = image;  //Выбор источника фото
   popupImage.alt = caption; //Выбор источника подписи
   popupCaption.textContent = caption;  //Выбор источника подписи
-
   showPopup(popupPhoto);  //Вызов функции показа попапа
-}
+};
 
 function deleteElementHandler (evt) {  //Функция удаления фото
   evt.target.closest('.element').remove();  //Ищем и удаляем весь блок фото
-}
+};
 
 function likeElementHandler (evt) {  //Функция лайков
   evt.target.classList.toggle('element__like_active');  //Добавляем лайку класс установленного
-}
+};
 
 function submitFormEditHandler (evt) {  //Функция для отправки данных формы редактировать
   evt.preventDefault();  //Эта строчка отменяет стандартную отправку формы
@@ -60,12 +92,12 @@ function submitFormEditHandler (evt) {  //Функция для отправки
   job.textContent = jobInpute.value;  //Получаем введённую работу пользователя
 
   closePopup(popupInfo)  //После отправки данных закрываем форму
-}
+};
 
 function prependInSection (title, link) {  //Функция создания нового элемента
   const newElement = createElement({name:title, link:link});  //Делаем новый элемент
   elementsSection.prepend(newElement);  //Вставляем новый элемент в секцию
-}
+};
 
 function submitFormAddHandler(evt) {  //Функция добавления фото
   evt.preventDefault(); //Эта строчка отменяет стандартную отправку формы
@@ -74,7 +106,7 @@ function submitFormAddHandler(evt) {  //Функция добавления фо
 
   closePopup(popupAdd);  //Закрываем попап
   formAddElement.reset();  //Сбрасываем значения формы
-}
+};
 
 function createElement(item) {  //Функция создания нового элемента
   const element = templateCard.querySelector('.element').cloneNode(true);  //Создаём элемент
@@ -92,15 +124,15 @@ function createElement(item) {  //Функция создания нового �
   elementImage.addEventListener('click', () => showPhoto(item.link, item.name));  //Слушатель нажатия кнопки вызова попапа фото
 
   return element;  //На выходе имеем готовый элемент
-}
+};
 
 function renderList() {  //Функция отрисовки элемента
   initialCards.forEach(item => prependInSection(item.name, item.link));  //Получаем данные из массива
-}
+};
 
 renderList();  //Запускаем функцию
 
-buttonAdd.addEventListener('click', () => showPopup(popupAdd));  //Слушатель нажатия кнопки добавить фото
+buttonAdd.addEventListener('click', showAdd);  //Слушатель нажатия кнопки добавить фото
 popupAddClose.addEventListener('click', () => closePopup(popupAdd));  //Слушатель нажания кнопки закрыть в добавить фото
 formAddElement.addEventListener('submit', submitFormAddHandler);  //Слушатель нажатия кнопки сохранить
 buttonEdit.addEventListener('click', showInfo);  //Слушатель нажатия кнопки изменить
