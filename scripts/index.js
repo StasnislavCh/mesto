@@ -2,7 +2,7 @@ import {initialCards} from './initialCards.js';  //импорт массива
 //import {Card} from './Card.js';  //импорт класса Card
 import {FormValidator} from './FormValidator.js';  //импорт класса FormValidator
 
-const validSetting = {  //Объект с необходимым для функции сброса ошибок
+const validSetting = {  //Объект с необходимым для валидации
   formSelector: '.popup__form',
   inputSelector: '.popup__inpute',
   submitButtonSelector: '.popup__save',
@@ -37,6 +37,12 @@ closeButtons.forEach((button) => {
   button.addEventListener('click', () => closePopup(popup));  //Слушатель нажатия кнопки закрыть
 });
 
+const popupInfoValid = new FormValidator(validSetting, popupEdit);
+popupInfoValid.enableValidation();
+
+const popupAddValid = new FormValidator(validSetting, popupAdd);
+popupAddValid.enableValidation();
+
 function showPopup(popup) {  //Функция показа попапа
   popup.classList.add('popup_opened');  //Добавляем попапу класс видимости
   document.addEventListener('keydown', handleEscClose);  //Добавляем слушатель кнопки Esc
@@ -65,14 +71,14 @@ function handleEscClose(evt) {  //Функция закрытия попапа �
 function showAdd() {  //Функция показа добавления
   formAddElement.reset();  //Сброс значений формы
   showPopup(popupAdd);  //Вызов показа попапа
-  resetFormError(validSetting, popupAdd);  //Сброс ошибок формы
+  popupAddValid.resetFormError();  //Сброс ошибок формы
 };
 
 function showInfo() {  //Функция показа редактирования
   showPopup(popupInfo);  //Вызываем функцию открытия попапа с параметром попапа редактирования
   profileNameInpute.value = profileName.textContent;  //Получаем со страницы имя пользователя
   jobInpute.value = job.textContent;  //Получаем со страницы работу пользователя
-  resetFormError(validSetting, popupInfo);//Сбрасываем ошибки попапа инфо
+  popupInfoValid.resetFormError();//Сбрасываем ошибки попапа инфо
 };
 
 function showPhoto(image, caption) { //Функция показа попапа фото
