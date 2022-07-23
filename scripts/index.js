@@ -1,5 +1,5 @@
 import {initialCards} from './initialCards.js';  //импорт массива
-//import {Card} from './Card.js';  //импорт класса Card
+import {Card} from './Card.js';  //импорт класса Card
 import {FormValidator} from './FormValidator.js';  //импорт класса FormValidator
 
 const validSetting = {  //Объект с необходимым для валидации
@@ -16,7 +16,7 @@ const popupAdd = document.querySelector('.popup_photo_add');  //Ищем поп�
 const formAddElement = popupAdd.querySelector('.popup__form_photo_add');  //Ищем форму в добавить фото
 const placeTitle = formAddElement.querySelector('.popup__inpute_field_title');  //Получаем введённое название места
 const placeLink = formAddElement.querySelector('.popup__inpute_field_link');  //Получаем введённую ссылку
-const templateCard = document.querySelector('.template-card').content;  //Получаем шаблон
+const templateCard = '.template-card';  //Получаем шаблон
 const elementsSection = document.querySelector('.elements');  //Получаем элемент
 
 const buttonEdit = document.querySelector(".profile__edit");  //Ищем кнопку изменить
@@ -37,10 +37,10 @@ closeButtons.forEach((button) => {
   button.addEventListener('click', () => closePopup(popup));  //Слушатель нажатия кнопки закрыть
 });
 
-const popupInfoValid = new FormValidator(validSetting, popupEdit);
+const popupInfoValid = new FormValidator(validSetting, popupInfo);  //Валидация попапа Info
 popupInfoValid.enableValidation();
 
-const popupAddValid = new FormValidator(validSetting, popupAdd);
+const popupAddValid = new FormValidator(validSetting, popupAdd);  //Валидация попапа Add
 popupAddValid.enableValidation();
 
 function showPopup(popup) {  //Функция показа попапа
@@ -78,7 +78,7 @@ function showInfo() {  //Функция показа редактировани�
   showPopup(popupInfo);  //Вызываем функцию открытия попапа с параметром попапа редактирования
   profileNameInpute.value = profileName.textContent;  //Получаем со страницы имя пользователя
   jobInpute.value = job.textContent;  //Получаем со страницы работу пользователя
-  popupInfoValid.resetFormError();//Сбрасываем ошибки попапа инфо
+  popupInfoValid.resetFormError();  //Сбрасываем ошибки попапа инфо
 };
 
 function showPhoto(image, caption) { //Функция показа попапа фото
@@ -86,14 +86,6 @@ function showPhoto(image, caption) { //Функция показа попапа 
   popupImage.alt = caption; //Выбор источника подписи
   popupCaption.textContent = caption;  //Выбор источника подписи
   showPopup(popupPhoto);  //Вызов функции показа попапа
-};
-
-function handleDeleteElement(evt) {  //Функция удаления фото
-  evt.target.closest('.element').remove();  //Ищем и удаляем весь блок фото
-};
-
-function handleLikeElement(evt) {  //Функция лайков
-  evt.target.classList.toggle('element__like_active');  //Добавляем лайку класс установленного
 };
 
 function handleSubmitFormEdit (evt) {  //Функция для отправки данных формы редактировать
@@ -120,28 +112,18 @@ function handleSubmitFormAdd (evt) {  //Функция добавления фо
 };
 
 function createElement(item) {  //Функция создания нового элемента
-  const element = templateCard.querySelector('.element').cloneNode(true);  //Создаём элемент
-  const elementImage = element.querySelector('.element__image');  //Задаём картинку
-  const elementTitle = element.querySelector('.element__title');  //Указываем название
-  const elementLike = element.querySelector('.element__like');  //Добавляем кнопку лайк
-  const elementDelete = element.querySelector('.element__delete');  //Добавляем кнопку удаления
+  const element = new Card(  //Создаём элемент
+    item.name,  //Получаем название
+    item.link,  //Получаем ссылку
+    templateCard,  //Получаем шаблон
+    showPhoto  //Добавляем слушатель открытия
+  );
+  return element.generateCard();  //На выходе имеем готовый элемент
+}
 
-  elementImage.src = item.link;  //Передаём адрес картинки в атрибут источник
-  elementImage.alt = item.name;  //Передаём название картинки в атрибут альт
-  elementTitle.textContent = item.name;  //Передаём название картинки в подпись
-
-  elementLike.addEventListener('click', handleLikeElement);  //Слушатель нажатия кнопки лайк
-  elementDelete.addEventListener('click', handleDeleteElement);  //Слушатель нажатия кнопки удалить
-  elementImage.addEventListener('click', () => showPhoto(item.link, item.name));  //Слушатель нажатия кнопки вызова попапа фото
-
-  return element;  //На выходе имеем готовый элемент
-};
-
-function renderList() {  //Функция отрисовки элемента
-  initialCards.forEach(item => prependInSection(item.name, item.link));  //Получаем данные из массива
-};
-
-renderList();  //Запускаем функцию
+initialCards.forEach((item) => {  //Функция отрисовки элемента
+  prependInSection(item.name, item.link);  //Получаем данные из массива
+});
 
 buttonAdd.addEventListener('click', showAdd);  //Слушатель нажатия кнопки добавить фото
 formAddElement.addEventListener('submit', handleSubmitFormAdd);  //Слушатель нажатия кнопки сохранить
