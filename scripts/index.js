@@ -1,4 +1,6 @@
 import {initialCards} from './initialCards.js';  //импорт массива
+import {Card} from './Card.js';  //импорт класса Card
+import {FormValidator} from './FormValidator.js';  //импорт класса FormValidator
 
 const validSetting = {  //Объект с необходимым для функции сброса ошибок
   formSelector: '.popup__form',
