@@ -18,7 +18,7 @@ export class Card {  //Экспорт класса
   }
 
   _handleDeleteElement() {  //Функция удаления фото
-    this._element.closest(".element").remove();  //Ищем и удаляем весь блок фото
+    this._element.remove();  //Ищем и удаляем весь блок фото
   }
 
   _setEventListener() {  //Функция слушателей кнопок
@@ -39,8 +39,8 @@ export class Card {  //Экспорт класса
     this._element.querySelector(".element__title").textContent = this._title;  //Указываем название
     this._like = this._element.querySelector(".element__like");  //Добавляем кнопку лайк
     this._delete = this._element.querySelector(".element__delete");  //Добавляем кнопку удаления
-    this._element.querySelector(".element__image").src = this._link;  //Передаём адрес картинки в атрибут источник
-    this._element.querySelector(".element__image").alt = this._title;  //Передаём название картинки в атрибут альт
+    this._image.src = this._link;  //Передаём адрес картинки в атрибут источник
+    this._image.alt = this._title;  //Передаём название картинки в атрибут альт
     this._setEventListener();  //Устанавливаем слушатели кнопок
     return this._element;  //На выходе имеем готовый элемент
   }
