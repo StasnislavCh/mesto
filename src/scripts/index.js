@@ -1,11 +1,13 @@
+import '../pages/index.css';
+
 import {initialCards} from './initialCards.js';  //импорт массива
 import {validSetting} from './validSetting.js';  //импорт объекта для вадидации
-import {Card} from './Card.js';  //импорт класса Card
-import PopupWithForm from './PopupWithForm.js'; //импорт класса PopupWithForm
-import PopupWithImage from './PopupWithImage.js';  //импорт класса PopupWithImage
-import Section from './Section.js';  //импорт класса Section
-import UserInfo from './UserInfo.js';  //импорт класса UserInfo
-import {FormValidator} from './FormValidator.js';  //импорт класса FormValidator
+import {Card} from './card.js';  //импорт класса Card
+import PopupWithForm from './popupWithForm.js'; //импорт класса PopupWithForm
+import PopupWithImage from './popupWithImage.js';  //импорт класса PopupWithImage
+import Section from './section.js';  //импорт класса Section
+import UserInfo from './userInfo.js';  //импорт класса UserInfo
+import {FormValidator} from './formValidator.js';  //импорт класса FormValidator
 
 const buttonAdd = document.querySelector('.profile__add');  //Ищем кнопку добавления фото
 const popupAdd = document.querySelector('.popup_photo_add');  //Ищем попап добавить фото

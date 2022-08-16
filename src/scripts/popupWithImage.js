@@ -1,4 +1,4 @@
-import Popup from "./Popup.js";  //Импорт класса Popup
+import Popup from "./popup.js";  //Импорт класса Popup
 export default class PopupWithImage extends Popup {  //Экспорт класса PopupWithImage с Popup
   constructor(popupSelector) {  //Вызов коструктора попапа
     super(popupSelector);  //Вызов родительского конструктора
