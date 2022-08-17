@@ -1,20 +1,17 @@
 {
   "name": "mesto",
-  "version": "0.0.1",
-  "description": "Mesto",
+  "version": "1.0.0",
+  "description": "### Обзор",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "rm -rf dist && webpack --mode production",
     "dev": "webpack serve"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/StasnislavCh/mesto.git"
   },
-  "keywords": [
-    "mesto"
-  ],
-  "author": "StanislavCh",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/StasnislavCh/mesto/issues"
