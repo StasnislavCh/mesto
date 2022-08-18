@@ -1,17 +1,17 @@
 export class FormValidator {  //Экспорт класса
-  constructor(validSetting, formSelector) {  //Вызов коструктора проверки валидности с параметрами из объекта в index.js
+  constructor(validSetting, form) {  //Вызов коструктора проверки валидности с параметрами из объекта в validSetting.js
     this._validSetting = validSetting;  //Задаём метод проверки валидности
-    this._formSelector = formSelector;  //Задём метод поиска форм
+    this._form = form;  //Задём метод поиска форм
     this._inputList = Array.from(  //Задаём метод поиска полей ввода
-      this._formSelector.querySelectorAll(this._validSetting.inputSelector)
+      this._form.querySelectorAll(this._validSetting.input)
       );
-    this._buttonElement = this._formSelector.querySelector(  //Задаём метод поиска кнопок
-      this._validSetting.submitButtonSelector
+    this._buttonElement = this._form.querySelector(  //Задаём метод поиска кнопок
+      this._validSetting.submitButton
     );
   }
 
   _showInputError(inputElement, errorMessage) {  //Показ ошибки
-    const errorElement = this._formSelector.querySelector(  //Ищем элемент с ошибкой
+    const errorElement = this._form.querySelector(  //Ищем элемент с ошибкой
       `.${inputElement.name}-error`
     );
     inputElement.classList.add(this._validSetting.inputErrorClass);  //Добавляем ему класс ошибки
@@ -20,7 +20,7 @@ export class FormValidator {  //Экспорт класса
   }
 
   _hideInputError(inputElement) {  //Скрытие ошибки
-    const errorElement = this._formSelector.querySelector(  //Ищем элемент с ошибкой
+    const errorElement = this._form.querySelector(  //Ищем элемент с ошибкой
       `.${inputElement.name}-error`
     );
     inputElement.classList.remove(this._validSetting.inputErrorClass);  //Удаляем у него класс ошибки

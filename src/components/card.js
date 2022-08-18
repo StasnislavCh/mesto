@@ -19,6 +19,7 @@ export class Card {  //Экспорт класса
 
   _handleDeleteElement() {  //Функция удаления фото
     this._element.remove();  //Ищем и удаляем весь блок фото
+    this._element = null;
   }
 
   _setEventListener() {  //Функция слушателей кнопок
