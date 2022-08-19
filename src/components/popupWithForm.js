@@ -1,4 +1,4 @@
-import Popup from './popup.js';  //Импорт класса Popup
+import Popup from './Popup.js';  //Импорт класса Popup
 export default class PopupWithForm extends Popup {  //Экспорт класса PopupWithForm с Popup
   constructor(popupSection, handleFormSubmit) {  //Вызов коструктора попапа
     super(popupSection);  //Вызов родительского конструктора
