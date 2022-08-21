@@ -9,6 +9,7 @@
 * HTML
 * CSS
 * JS
+* WebPack
 
 **Где посмотреть**
 

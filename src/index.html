@@ -7,15 +7,14 @@
   <meta name="description" content="Портфолио Станислава Чоботько на Яндекс.Практикуме">
   <meta name="keywords" content="Mesto">
   <meta name="author" content="Станислав Чоботько">
-  <link rel="stylesheet" type="text/css" href="./pages/index.css">
 </head>
 <body class="page">
   <header class="header">
-    <img class="header__logo" src="./images/logo.svg" alt="Место">
+    <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Место">
   </header>
   <main class="content">
     <section class="profile">
-      <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватарка">
+      <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватарка">
       <div class="profile__info">
         <div class="profile__container">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -80,6 +79,5 @@
       </div>
     </article>
   </template>
-  <script src="./scripts/index.js" type="module"></script>
 </body>
 </html>
