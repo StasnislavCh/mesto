@@ -9,7 +9,7 @@
   transition: .5s;
   cursor: pointer;
   padding: 0;
-  margin: 5px 0 0;
+  margin: 0;
 }
 
 .element__like:hover {
