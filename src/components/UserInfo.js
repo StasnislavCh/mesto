@@ -1,7 +1,8 @@
 export default class UserInfo {  //Экспорт класса UserInfo
-  constructor({userNameSelector, jobSelector}) {  //Вызов конструктора инфо о пользователе
+  constructor({userNameSelector, jobSelector, userAvatarSelector}) {  //Вызов конструктора инфо о пользователе
     this._userName = document.querySelector(userNameSelector);  //Задаём Имя
     this._job = document.querySelector(jobSelector);  //Задаём работу
+    this._userAvatar = document.querySelector(userAvatarSelector);  //Задаём аватар
   }
 
   getUserInfo() {  //Получение инфо
@@ -10,8 +11,9 @@ export default class UserInfo {  //Экспорт класса UserInfo
     };
   }
 
-  setUserInfo(name, job) {  //Сохранение инфо
-    this._userName.textContent = name;
-    this._job.textContent = job;
+  setUserInfo(item) {  //Сохранение инфо
+    this._userName.textContent = item.name;
+    this._job.textContent = item.job;
+    this._userAvatar.src = item.avatar;
   }
 }

@@ -30,4 +30,13 @@ export default class PopupWithForm extends Popup {  //Экспорт класс�
 
     this._form.reset();  //Сбрасываем значения формы
   }
+
+  onLoading(loading, message) {  //Улучшение UX
+    const saveButton = this._popup.querySelector('.popup__save');  //Ищем кнопку сохранить
+    if (loading) {
+      saveButton.textContent = 'Сохранение...';  //Пока идёт загрузка, изменяем текст
+    } else {
+      saveButton.textContent = message;
+    }
+  }
 }

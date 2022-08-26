@@ -1,9 +1,17 @@
 export class Card {  //Экспорт класса
-  constructor(title, link, cardSelector, showPhoto) {  //Вызов коструктора создания карточки
-    this._title = title;  //Задаём заголовок
-    this._link = link;  //Задаём ссылку
+  constructor(item, cardSelector, handleOpenImage, myId, handleDeleteElement, like, unlike) {  //Вызов коструктора создания карточки
+    this._item = item;  //Задаём элемент
+    this._title = item.title;  //Задаём заголовок
+    this._link = item.link;  //Задаём ссылку
+    this._likes = item.likes;  //Задаём лайк
+    this._id = item._id;  //Задаём id
     this._cardSelector = cardSelector;  //Задаём карточку
-    this._showPhoto = showPhoto;  //Задаём слушатель показа попапа фото
+    this._handleOpenImage = handleOpenImage;  //Задаём открытие картинки
+    this._myId = myId;  //Задаём свой id
+    this._ownerId = item.owner._id;  //Задаём id загрузившего картинку
+    this._like = like;  //Задаём установку лайка
+    this._unlike = unlike;  //Задаём снятие лайка
+    this._handleDeleteElement = handleDeleteElement;  //Задаём удаление картинки
   }
 
   _getTemplate() {  //Получаем шаблон
@@ -13,24 +21,55 @@ export class Card {  //Экспорт класса
       .cloneNode(true);  //Клонируем
   }
 
-  _handleLikeElement() {  //Функция лайков
-    this._like.classList.toggle("element__like_active");  //Добавляем лайку класс установленного
+  getId() {  //Получаем id
+    return this._id;
   }
 
-  _handleDeleteElement() {  //Функция удаления фото
-    this._element.remove();  //Ищем и удаляем весь блок фото
-    this._element = null;
+  handleLikeElement() {  //Функция лайков
+    this._element.querySelector(".element__like")  //Ищем элемент лайка
+    this._element.classList.add("element__like_active");  //Добавляем лайку класс установленного
   }
 
-  _setEventListener() {  //Функция слушателей кнопок
-    this._delete.addEventListener("click", () => {  //Слушатель кнопки удалить
-      this._handleDeleteElement();  //Удалить фото
+  handleUnLikeElement() {  //Функция отмены лайков
+    this._element.querySelector(".element__like")  // Ищем элемент лайка
+    this._element.classList.remove("element__like_active");  //Убираем у лайка класс установленного
+  }
+
+  _checkLikes() {  //Проверка лайка
+    this._likes.forEach((like) => {  //Берём массив лайков
+      if (like._id === this._myId) {  //Если id совпадают
+        this._element.querySelector(".element__like")  //Ищем элемент лайка
+        this._element.classList.add("element__like_active");  //Добавляем лайку класс установленного
+      }
     });
-    this._like.addEventListener("click", () => {  //Слушатель кнопки лайк
-      this._handleLikeElement();  //Лайк
+  }
+
+  countLikes(item) {  //Счётчик лайков
+    this._element.querySelector(".element__like-counter").textContent = item.likes.length;
+  }
+
+  handleDeleteElement() {  //Функция удаления фото
+    this._element.closest(".element").remove();  //Ищем и удаляем весь блок фото
+    this._element = null;  //Для очистки памяти зануляем
+  }
+
+  _setEventListener() {  //Установка слушателей
+    this._image.addEventListener("click", () => {  //При клике на фото
+      this._handleOpenImage(this._title, this._link);  //Открыть большую картинку
     });
-    this._image.addEventListener("click", () => {  //Слушатель щелчка по фото
-      this._showPhoto(this._link, this._title);  //Открыть попап фото
+
+    if (this._ownerId === this._myId) {  //Если фото добавлено мной
+      this._element.querySelector(".element__delete").addEventListener("click", () => {  //Тогда добавляем иконку удаления
+        this._handleDeleteElement();
+      });
+    }
+
+    this._likeButton.addEventListener("click", () => {  //При клике на лайк
+      if (this._likeButton.classList.contains("element__like_active")) {  //Если лайк уже стоит
+        this._unlike();  //то снять его
+      } else {
+        this._like();  //если не стоит, то поставить
+      }
     });
   }
 
@@ -38,11 +77,15 @@ export class Card {  //Экспорт класса
     this._element = this._getTemplate();  //Получаем шаблон
     this._image = this._element.querySelector(".element__image");  //Задаём картинку
     this._element.querySelector(".element__title").textContent = this._title;  //Указываем название
-    this._like = this._element.querySelector(".element__like");  //Добавляем кнопку лайк
-    this._delete = this._element.querySelector(".element__delete");  //Добавляем кнопку удаления
-    this._image.src = this._link;  //Передаём адрес картинки в атрибут источник
-    this._image.alt = this._title;  //Передаём название картинки в атрибут альт
+    this._likeButton = this._element.querySelector(".element__like");  //Добавляем кнопку лайк
+    if (this._ownerId !== this._myId) {  //Если id не совпадают
+      this._element.querySelector(".element__delete").remove();  //то убрать иконку удаления
+    }
+    this._element.querySelector(".element__image").src = this._link;  //Передаём адрес картинки в атрибут источник
+    this._element.querySelector(".element__image").alt = this._title;  //Передаём название картинки в атрибут альт
     this._setEventListener();  //Устанавливаем слушатели кнопок
+    this.countLikes(this._item);  //Добавляем счётчик лайков
+    this._checkLikes();  //Добавляем проверку лайков
     return this._element;  //На выходе имеем готовый элемент
   }
 }
