@@ -36,8 +36,7 @@
     <div class="popup__container">
       <button class="popup__close popup__close_edit_info" type="button" aria-label="Закрыть"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form class="popup__form popup__form_edit_info" name="editInfo" method="get" action="./scripts/index.js"
-        novalidate>
+      <form class="popup__form popup__form_edit_info" name="editInfo" method="get" action="./scripts/index.js" novalidate>
         <input class="popup__inpute popup__inpute_field_name" type="text" name="name" placeholder="Имя" minlength="2"
           maxlength="40" required>
         <span class="popup__error name-error"></span>
@@ -52,8 +51,7 @@
     <div class="popup__container">
       <button class="popup__close popup__close_edit_avatar" type="button" aria-label="Закрыть"></button>
       <h3 class="popup__title">Обновить аватар</h3>
-      <form class="popup__form popup__form_edit_avatar" name="editAvatar" method="get" action="./scripts/index.js"
-        novalidate>
+      <form class="popup__form popup__form_edit_avatar" name="editAvatar" method="get" action="./scripts/index.js" novalidate>
         <input class="popup__inpute popup__inpute_field_link" type="url" name="avatarLink"
           placeholder="Ссылка на аватар" required>
         <span class="popup__error avatarLink-error"></span>
@@ -65,8 +63,7 @@
     <div class="popup__container">
       <button class="popup__close popup__close_photo_add" type="button" aria-label="Закрыть"></button>
       <h3 class="popup__title">Новое место</h3>
-      <form class="popup__form popup__form_photo_add" name="photoAdd" method="get" action="./scripts/index.js"
-        novalidate>
+      <form class="popup__form popup__form_photo_add" name="photoAdd" method="get" action="./scripts/index.js" novalidate>
         <input class="popup__inpute popup__inpute_field_title" type="text" name="photoTitle" placeholder="Название"
           minlength="2" maxlength="30" required>
         <span class="popup__error photoTitle-error"></span>
@@ -81,7 +78,7 @@
     <div class="popup__container">
       <button class="popup__close popup__close_photo_del" type="button" aria-label="Закрыть"></button>
       <h3 class="popup__title">Вы уверены?</h3>
-      <form class="popup__form popup__form_photo_del" name="photoDel" method="get" action="./scripts/index.js"
+      <form class="popup__form popup__form_photo_del" name="photoDel" method="get" action="./scripts/index.js" novalidate>
         <button class="popup__save" type="submit" aria-label="Да">Да</button>
       </form>
     </div>
