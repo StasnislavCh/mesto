@@ -1,11 +1,11 @@
-export class Card {  //Экспорт класса
-  constructor(item, cardSelector, handleOpenImage, myId, handleDeleteElement, like, unlike) {  //Вызов коструктора создания карточки
+export default class Card {  //Экспорт класса
+  constructor(item, selector, handleOpenImage, myId, handleDeleteElement, like, unlike) {  //Вызов коструктора создания карточки
     this._item = item;  //Задаём элемент
-    this._title = item.title;  //Задаём заголовок
+    this._name = item.name;  //Задаём заголовок
     this._link = item.link;  //Задаём ссылку
     this._likes = item.likes;  //Задаём лайк
     this._id = item._id;  //Задаём id
-    this._cardSelector = cardSelector;  //Задаём карточку
+    this._selector = selector;  //Задаём карточку
     this._handleOpenImage = handleOpenImage;  //Задаём открытие картинки
     this._myId = myId;  //Задаём свой id
     this._ownerId = item.owner._id;  //Задаём id загрузившего картинку
@@ -16,7 +16,7 @@ export class Card {  //Экспорт класса
 
   _getTemplate() {  //Получаем шаблон
     return document  //Возращаем документ
-      .querySelector(this._cardSelector)  //Выбираем карточку
+      .querySelector(this._selector)  //Выбираем карточку
       .content.querySelector(".element")  //Ищем карточку
       .cloneNode(true);  //Клонируем
   }
@@ -55,7 +55,7 @@ export class Card {  //Экспорт класса
 
   _setEventListener() {  //Установка слушателей
     this._image.addEventListener("click", () => {  //При клике на фото
-      this._handleOpenImage(this._title, this._link);  //Открыть большую картинку
+      this._handleOpenImage(this._name, this._link);  //Открыть большую картинку
     });
 
     if (this._ownerId === this._myId) {  //Если фото добавлено мной
@@ -76,13 +76,13 @@ export class Card {  //Экспорт класса
   generateCard() {  //Функция создания нового элемента
     this._element = this._getTemplate();  //Получаем шаблон
     this._image = this._element.querySelector(".element__image");  //Задаём картинку
-    this._element.querySelector(".element__title").textContent = this._title;  //Указываем название
+    this._element.querySelector(".element__title").textContent = this._name;  //Указываем название
     this._likeButton = this._element.querySelector(".element__like");  //Добавляем кнопку лайк
     if (this._ownerId !== this._myId) {  //Если id не совпадают
       this._element.querySelector(".element__delete").remove();  //то убрать иконку удаления
     }
     this._element.querySelector(".element__image").src = this._link;  //Передаём адрес картинки в атрибут источник
-    this._element.querySelector(".element__image").alt = this._title;  //Передаём название картинки в атрибут альт
+    this._element.querySelector(".element__image").alt = this._name;  //Передаём название картинки в атрибут альт
     this._setEventListener();  //Устанавливаем слушатели кнопок
     this.countLikes(this._item);  //Добавляем счётчик лайков
     this._checkLikes();  //Добавляем проверку лайков

@@ -22,7 +22,7 @@ export default class Api {  //Экспорт класса Api
 
   getInitialCards() {  //Загрузка начальных карточек
     return fetch(`${this._url}cards`, {
-      method: "GET",  //метод
+      method: "GET",
       headers: this._headers
     })
       .then(this._testConnection);

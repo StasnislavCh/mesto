@@ -1,4 +1,4 @@
-export class FormValidator {  //Экспорт класса
+export default class FormValidator {  //Экспорт класса
   constructor(validSetting, form) {  //Вызов коструктора проверки валидности с параметрами из объекта в validSetting.js
     this._validSetting = validSetting;  //Задаём метод проверки валидности
     this._form = form;  //Задём метод поиска форм

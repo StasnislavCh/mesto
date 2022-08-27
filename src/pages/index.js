@@ -1,13 +1,13 @@
 import './index.css';
 
 import {validSetting} from '../components/validSetting.js';  //импорт объекта для вадидации
-import {Card} from '../components/Card.js';  //импорт класса Card
+import Card from '../components/Card.js';  //импорт класса Card
 import PopupWithForm from '../components/PopupWithForm.js'; //импорт класса PopupWithForm
 import PopupWithImage from '../components/PopupWithImage.js';  //импорт класса PopupWithImage
 import PopupDelete from '../components/PopupDelete.js'  //импорт класса PopupDelete
 import Section from '../components/Section.js';  //импорт класса Section
 import UserInfo from '../components/UserInfo.js';  //импорт класса UserInfo
-import {FormValidator} from '../components/FormValidator.js';  //импорт класса FormValidator
+import FormValidator from '../components/FormValidator.js';  //импорт класса FormValidator
 import Api from '../components/Api.js';  //импорт класса Api
 
 let myId;
@@ -117,7 +117,7 @@ function handleEditAvatar(item) {  //Функция для изменения а
 
 function prependInSection(item) {  //Функция создания нового элемента
   popupAddForm.onLoading(true, 'Сохранить');
-  api.addNewElement(item.title, item.url)  //Если всё хорошо, то сздать новый элемент и закрыть попап
+  api.addNewElement(item.title, item.url)  //Если всё хорошо, то создать новый элемент и закрыть попап
     .then(res => {
       section.addItem(createElement(res));
       popupAddForm.close();
