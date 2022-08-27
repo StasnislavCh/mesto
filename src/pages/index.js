@@ -36,7 +36,7 @@ const popupAddForm = new PopupWithForm('.popup_photo_add', prependInSection);  /
 const section = new Section({renderer: createElement}, '.elements');  //Задаём блок section
 const userProfile = new UserInfo({userNameSelector: '.profile__name', jobSelector: '.profile__job', userAvatarSelector: '.profile__photo'});  //Задаём имя, работу и аватарку
 const popupProfileEdit = new PopupWithForm('.popup_edit_info', handleSubmitFormEdit);  //Задаём попап редактирования имя и работы
-const popupEditAvatar = new PopupWithForm('.popup_avatar', handleEditAvatar);  //Задаём попап изменения аватарки
+const popupEditAvatar = new PopupWithForm('.popup_edit_avatar', handleEditAvatar);  //Задаём попап изменения аватарки
 
 const popupDelete = new PopupDelete('.popup_photo_del');  //Задаём попап удаления фото
 
