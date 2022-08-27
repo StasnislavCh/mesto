@@ -160,7 +160,7 @@ function createElement(item) {  //Функция создания нового �
         console.log(err);
       })
   })
-  return element.createElement();  //На выходе имеем готовый элемент
+  return element.generateCard();  //На выходе имеем готовый элемент
 }
 
 buttonAdd.addEventListener("click", () => {  //Слушатель нажатия кнопки добавить фото

@@ -26,20 +26,23 @@ export default class Card {  //Экспорт класса
   }
 
   handleLikeElement() {  //Функция лайков
-    this._element.querySelector(".element__like")  //Ищем элемент лайка
-    this._element.classList.add("element__like_active");  //Добавляем лайку класс установленного
+    this._element
+      .querySelector(".element__like")  //Ищем элемент лайка
+      .classList.add("element__like_active");  //Добавляем лайку класс установленного
   }
 
   handleUnLikeElement() {  //Функция отмены лайков
-    this._element.querySelector(".element__like")  // Ищем элемент лайка
-    this._element.classList.remove("element__like_active");  //Убираем у лайка класс установленного
+    this._element
+      .querySelector(".element__like")  // Ищем элемент лайка
+      .classList.remove("element__like_active");  //Убираем у лайка класс установленного
   }
 
   _checkLikes() {  //Проверка лайка
     this._likes.forEach((like) => {  //Берём массив лайков
       if (like._id === this._myId) {  //Если id совпадают
-        this._element.querySelector(".element__like")  //Ищем элемент лайка
-        this._element.classList.add("element__like_active");  //Добавляем лайку класс установленного
+        this._element
+        .querySelector(".element__like")  //Ищем элемент лайка
+        .classList.add("element__like_active");  //Добавляем лайку класс установленного
       }
     });
   }
