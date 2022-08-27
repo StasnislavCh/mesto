@@ -8,9 +8,8 @@ import PopupDelete from '../components/PopupDelete.js'  //импорт клас�
 import Section from '../components/Section.js';  //импорт класса Section
 import UserInfo from '../components/UserInfo.js';  //импорт класса UserInfo
 import {FormValidator} from '../components/FormValidator.js';  //импорт класса FormValidator
-import {apiId} from '../components/apiId.js';  //импорт apiId
+import {apiId} from '../components/Api.js';  //импорт apiId
 import Api from '../components/Api.js';  //импорт класса Api
-
 
 let myId;
 
