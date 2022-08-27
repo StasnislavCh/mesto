@@ -8,10 +8,16 @@ import PopupDelete from '../components/PopupDelete.js'  //импорт клас�
 import Section from '../components/Section.js';  //импорт класса Section
 import UserInfo from '../components/UserInfo.js';  //импорт класса UserInfo
 import {FormValidator} from '../components/FormValidator.js';  //импорт класса FormValidator
-import {apiId} from '../components/Api.js';  //импорт apiId
 import Api from '../components/Api.js';  //импорт класса Api
 
 let myId;
+const apiId = {
+  url: 'https://mesto.nomoreparties.co/v1/cohort-48/',
+  headers: {
+    authorization: 'bf0486f9-3daf-4fe5-a38c-cc62044e9a6a',
+    'Content-Type': 'application/json'
+  }
+};
 
 const buttonAdd = document.querySelector('.profile__add');  //Ищем кнопку добавления фото
 const popupAdd = document.querySelector('.popup_photo_add');  //Ищем попап добавить фото

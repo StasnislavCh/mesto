@@ -13,7 +13,7 @@ export default class UserInfo {  //Экспорт класса UserInfo
 
   setUserInfo(item) {  //Сохранение инфо
     this._userName.textContent = item.name;
-    this._job.textContent = item.job;
+    this._job.textContent = item.about;
     this._userAvatar.src = item.avatar;
   }
 }
