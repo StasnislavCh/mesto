@@ -25,13 +25,13 @@ export default class Card {  //Экспорт класса
     return this._id;
   }
 
-  handleLikeElement() {  //Функция лайков
+  likeElement() {  //Функция лайков
     this._element
       .querySelector(".element__like")  //Ищем элемент лайка
       .classList.add("element__like_active");  //Добавляем лайку класс установленного
   }
 
-  handleUnLikeElement() {  //Функция отмены лайков
+  unLikeElement() {  //Функция отмены лайков
     this._element
       .querySelector(".element__like")  // Ищем элемент лайка
       .classList.remove("element__like_active");  //Убираем у лайка класс установленного
@@ -51,7 +51,7 @@ export default class Card {  //Экспорт класса
     this._element.querySelector(".element__like-counter").textContent = item.likes.length;
   }
 
-  handleDeleteElement() {  //Функция удаления фото
+  deleteElement() {  //Функция удаления фото
     this._element.closest(".element").remove();  //Ищем и удаляем весь блок фото
     this._element = null;  //Для очистки памяти зануляем
   }

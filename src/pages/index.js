@@ -117,7 +117,7 @@ function handleEditAvatar(item) {  //Функция для изменения а
 
 function prependInSection(item) {  //Функция создания нового элемента
   popupAddForm.onLoading(true, 'Сохранить');
-  api.addNewElement(item.title, item.url)  //Если всё хорошо, то создать новый элемент и закрыть попап
+  api.addNewElement(item.photoTitle, item.photoLink)  //Если всё хорошо, то создать новый элемент и закрыть попап
     .then(res => {
       section.addItem(createElement(res));
       popupAddForm.close();

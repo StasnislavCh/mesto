@@ -40,7 +40,7 @@ export default class Api {  //Экспорт класса Api
       .then(this._testConnection);
   }
 
-  addNewElement(title, url) {  //Добавление нового элемента
+  addNewElement(title, url) {  //Добавление элемента
     return fetch(`${this._url}cards`, {
       method: 'POST',
       headers: this._headers,
@@ -81,7 +81,7 @@ export default class Api {  //Экспорт класса Api
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        avatar: item.url
+        avatar: item.avatarLink
       })
     })
       .then(this._testConnection);

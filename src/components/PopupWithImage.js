@@ -7,7 +7,7 @@ export default class PopupWithImage extends Popup {  //Экспорт класс
     this._caption = this._popup.querySelector('.popup__caption');  //Задаём описание
   }
 
-  open(link, title) {  //Открываем попап
+  open(title, link) {  //Открываем попап
     super.open();  //Вызов родительского конструктора
 
     this._image.src = link;  //Задаём картинку
