@@ -7,7 +7,7 @@ export default class PopupWithForm extends Popup {  //Экспорт класс�
     this._inputs = [...this._form.querySelectorAll('.popup__inpute')];  //Задаём поле ввода
     this._values = {};  //Задаём данные
     this._handleFormSubmit = handleFormSubmit;  //Задаём отправку
-    this._saveButton = this._popup.querySelector('.popup__save');
+    this._saveButton = this._popup.querySelector('.popup__save');  //Ищем кнопку сохранить
   }
 
   _getInputValues() {  //Получаем введённые данные
