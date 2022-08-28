@@ -6,7 +6,7 @@ export default class Section {  //Экспорт класса Section
 
   renderItems(items) {  //Отрисовка элементов
     this._items = items;  //Задаём элементы
-    this._items.forEach((data) => {
+    this._items.reverse().forEach((data) => {
       this.addItem(this._renderer(data));  //Берём элементы из объекта и отрисовываем их на страницу
     });
   }
