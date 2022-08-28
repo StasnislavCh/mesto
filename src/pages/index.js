@@ -25,9 +25,6 @@ const templateCard = '.template-card';  //Получаем шаблон
 
 const buttonEdit = document.querySelector('.profile__edit');  //Ищем кнопку изменить
 const popupInfo = document.querySelector('.popup_edit_info');  //Ищем попап редактирования
-const formEditElement = popupInfo.querySelector('.popup__form_edit_info');  //Ищем форму в попапе редактирования
-const profileNameInpute = formEditElement.querySelector('.popup__inpute_field_name');  //Получаем введённое имя пользователя
-const jobInpute = formEditElement.querySelector('.popup__inpute_field_job');  //Получаем введённую работу пользователя
 
 const popupAvatar = document.querySelector('.popup_edit_avatar');  //Ищем попап редактирования аватарки
 const avatarEdit = document.querySelector('.profile__avatar');  //Ищем аватарку
