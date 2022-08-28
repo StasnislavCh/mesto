@@ -155,9 +155,8 @@ buttonAdd.addEventListener("click", () => {  //Слушатель нажатия
 });
 popupAddForm.setEventListeners();  //Устанавливаем слушатели на форму попапа добавления фото
 buttonEdit.addEventListener("click", () => {  //Слушатель нажатия кнопки изменить
-  const {name, job} = userProfile.getUserInfo();
-  profileNameInpute.value = name;
-  jobInpute.value = job;
+  const data = userProfile.getUserInfo();
+  popupProfileEdit.setInputValues(data);
   popupProfileEdit.open();
   popupInfoValid.resetFormError();
 });
