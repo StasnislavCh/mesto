@@ -55,26 +55,12 @@ popupAddValid.enableValidation();
 const popupAvatarValid = new FormValidator(validSetting, popupAvatar);  //Валидация попапа изменения аватарки
 popupAvatarValid.enableValidation()
 
-getUserInfoPromise  //Получение инфо о юзере
-  .then(res => {
-    myId = res._id;
-    userProfile.setUserInfo(res);
-  })
-  .catch(err => {  //Если что-то не так, по вывести ошибку в консоль
-    console.log(err)
-  });
-
-getInitialCards  //Запуск отрисовки начальных картинок
-  .then(res => {
-    section.renderItems(res);
-  })
-  .catch(err => {  //Если что-то не так, по вывести ошибку в консоль
-    console.log(err)
-  });
-
 Promise.all(([getUserInfoPromise, getInitialCards]))  //Запуск промисов параллельно и ожидание результата
-  .then(res => {
-    console.log(res);
+  .then(([userData, cards]) => {
+    myId = userData._id;
+    userProfile.setUserInfo(userData);
+
+    section.renderItems(cards);
   })
   .catch(err => {  //Если что-то не так, по вывести ошибку в консоль
     console.log(err)
