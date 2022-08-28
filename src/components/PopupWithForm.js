@@ -7,6 +7,7 @@ export default class PopupWithForm extends Popup {  //Экспорт класс�
     this._inputs = [...this._form.querySelectorAll('.popup__inpute')];  //Задаём поле ввода
     this._values = {};  //Задаём данные
     this._handleFormSubmit = handleFormSubmit;  //Задаём отправку
+    this._saveButton = this._popup.querySelector('.popup__save');
   }
 
   _getInputValues() {  //Получаем введённые данные
@@ -32,11 +33,11 @@ export default class PopupWithForm extends Popup {  //Экспорт класс�
   }
 
   onLoading(loading, message) {  //Улучшение UX
-    const saveButton = this._popup.querySelector('.popup__save');  //Ищем кнопку сохранить
+  this._saveButton  //Ищем кнопку сохранить
     if (loading) {
-      saveButton.textContent = 'Сохранение...';  //Пока идёт загрузка, изменяем текст
+      this._saveButton.textContent = 'Сохранение...';  //Пока идёт загрузка, изменяем текст
     } else {
-      saveButton.textContent = message;
+      this._saveButton.textContent = message;
     }
   }
 }
